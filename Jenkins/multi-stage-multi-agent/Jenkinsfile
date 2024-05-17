@@ -13,7 +13,7 @@ pipeline {
         sh 'mvn --version'
       }
     }
-	stage('Back-end-docker') {
+	stage('Front-end-docker') {
       steps {
         docker { image 'node:16-alpine'  }
       }
