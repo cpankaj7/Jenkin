@@ -3,18 +3,22 @@ pipeline {
     label "SlaveNode1"
   }
   stages {
-    stage('Back-end') {
-      agent {
+    stage('Back-end-docker') {
+      steps {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
       }
+    }
+	stage('Back-end-maven') {
       steps {
         sh 'mvn --version'
       }
     }
-    stage('Front-end') {
-      agent {
-        docker { image 'node:16-alpine' }
+	stage('Back-end-docker') {
+      steps {
+        docker { image 'node:16-alpine'  }
       }
+    }
+    stage('Front-end-node') {
       steps {
         sh 'node --version'
       }
